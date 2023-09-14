@@ -5,6 +5,4 @@ postHandler.getAllPost = (req,res) => {
     res.end("Hallo !")
 }
 
-
-
-module.exports = postHandler
+export default postHandler;

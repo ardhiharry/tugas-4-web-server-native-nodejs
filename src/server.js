@@ -1,5 +1,5 @@
-const http = require("http")
-const router = require("./router/router")
+import http from 'http';
+import router from './router/router.js';
 
 const boot = () => {
     const init = http.createServer((req,res) => {
@@ -13,4 +13,4 @@ const boot = () => {
     return init
 }
 
-module.exports = boot
+export default boot;

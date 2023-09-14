@@ -1,4 +1,4 @@
-const postHandler = require("../handler/postHandler")
+import postHandler from '../handler/postHandler.js';
 
 const router = {}
 router.init = (req,res) => {
@@ -12,4 +12,5 @@ router.init = (req,res) => {
         res.end("Not Found Route !")
     }
 }
-module.exports = router
+
+export default router;
