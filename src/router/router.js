@@ -8,17 +8,17 @@ router.init = (req,res) => {
         postHandler.getAllPost(req,res)
     }
 
-    if(req.url === "/api/comment/get") {
+    else if(req.url === "/api/comment/get") {
         commentHandler.getAllComment(req, res);
     }
 
-    if(req.url === "/api/post-comment/get") {
+    else if(req.url === "/api/post-comment/get") {
         postCommentHandler.getAllPostComment(req, res);
     }
 
-    // else {
-    //     res.end("Not Found Route !")
-    // }
+    else {
+        res.end("Not Found Route !")
+    }
 }
 
 export default router;
