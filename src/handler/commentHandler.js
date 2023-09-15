@@ -1,17 +1,19 @@
 import https from 'https';
 
-const postHandler = {}
+const commentHandler = {}
 
-postHandler.getAllPost = (req,res) => {
-    const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+commentHandler.getAllComment = (req,res) => {
+    const apiUrl = "https://jsonplaceholder.typicode.com/comments";
 
     https.get(apiUrl, (apiResponse) => {
         let data = "";
 
+        // Mengumpulkan data dari respons API
         apiResponse.on("data", (chunk) => {
             data += chunk;
         });
 
+        // Menyusun dan mengirim data JSON
         apiResponse.on("end", () => {
             try {
                 const jsonData = JSON.parse(data);
@@ -26,4 +28,4 @@ postHandler.getAllPost = (req,res) => {
     });
 }
 
-export default postHandler;
+export default commentHandler;
