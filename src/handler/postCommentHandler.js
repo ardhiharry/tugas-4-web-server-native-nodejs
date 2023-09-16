@@ -23,7 +23,7 @@ postCommentHandler.getAllPostComment = async (req, res) => {
           emailUser: comment.email,
           contentComment: comment.body,
         })),
-      };
+      }
     });
 
     res.end(JSON.stringify(combinedData));
@@ -36,16 +36,16 @@ postCommentHandler.getAllPostComment = async (req, res) => {
 
 function fetchData(apiUrl) {
   return new Promise((resolve, reject) => {
-    https.get(apiUrl, (apiResponse) => {
+    https.get(apiUrl, (response) => {
       let data = '';
 
       // Mengumpulkan data dari respons API
-      apiResponse.on('data', (chunk) => {
+      response.on('data', (chunk) => {
         data += chunk;
       });
 
       // Menyusun dan mengembalikan data JSON saat respons selesai
-      apiResponse.on('end', () => {
+      response.on('end', () => {
         try {
           const jsonData = JSON.parse(data);
           resolve(jsonData);

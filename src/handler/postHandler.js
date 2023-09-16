@@ -5,18 +5,25 @@ const postHandler = {}
 postHandler.getAllPost = (req,res) => {
     const apiUrl = "https://jsonplaceholder.typicode.com/posts";
 
-    https.get(apiUrl, (apiResponse) => {
+    https.get(apiUrl, (response) => {
         let data = "";
 
-        apiResponse.on("data", (chunk) => {
+        response.on("data", (chunk) => {
             data += chunk;
         });
 
-        apiResponse.on("end", () => {
+        response.on("end", () => {
             try {
-                const jsonData = JSON.parse(data);
-                res.statusCode = 200;
-                res.end(JSON.stringify(jsonData));
+                const postData = JSON.parse(data);
+                const posts = postData.map((post) => {
+                    return {
+                        userId: post.userId,
+                        postId: post.id,
+                        judulPost: post.title,
+                        content: post.body,
+                    }
+                });
+                res.end(JSON.stringify(posts));
             } catch(err) {
                 console.error('Gagal mengurai JSON:', err);
                 res.statusCode = 500;
